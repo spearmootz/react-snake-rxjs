@@ -1,9 +1,9 @@
 import Rx from 'rxjs';
+const dimension = 30;
 
 const calculateGameProperties = ({ target: { innerHeight, innerWidth } }) => {
-  const dimension = 50;
   let length = ((innerWidth < innerHeight ? innerWidth : innerHeight) * 0.9);
-  length -= length % 50
+  length -= length % dimension
 
   return {
     height: length,

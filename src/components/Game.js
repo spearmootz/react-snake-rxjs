@@ -7,8 +7,8 @@ import Dot from './Dot';
 
 export default class Game extends Component {
   static initalState = {
-    snake: [{ x: 24, y: 25 }],
-    dot: { x: 24,  y: 25 },
+    snake: [{ x: 15, y: 15 }],
+    dot: { x: 15,  y: 15 },
     direction: { x: 0, y: 0 }
   }
 
@@ -104,7 +104,7 @@ export default class Game extends Component {
   }
 
   render() {
-    const { screen: { height, width, verticalMargin, horizontalMargin, gridSize, dimension }, snake, dot } = this.state;
+    const { screen: { height, width, verticalMargin, horizontalMargin, gridSize }, snake, dot } = this.state;
 
     return (
       <div>
