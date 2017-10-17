@@ -1,0 +1,10 @@
+.dot {
+  position: absolute;
+  top: 0px;
+  left: 0px
+}
+
+.dot div {
+  background-color: gray;
+  position: absolute;
+}

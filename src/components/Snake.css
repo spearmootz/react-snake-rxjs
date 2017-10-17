@@ -1,0 +1,10 @@
+.snake {
+  position: absolute;
+  top: 0px;
+  left: 0px
+}
+
+.snake div {
+  background-color: black;
+  position: absolute;
+}

@@ -1,0 +1,14 @@
+.grid {
+  height: 100%;
+  width: 100%;
+  background-color: cornflowerblue;
+}
+.grid .row {
+  display: flex;
+}
+
+.grid .row div {
+  border: 1px solid gray;
+  overflow: hidden;
+  opacity: 0.5
+}
