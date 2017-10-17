@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
+<img src="https://imgur.com/a/C75sP" />
+
 ### `npm install`
 Installs the dependencies required for the project to run
 
