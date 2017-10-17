@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { inject } from 'mobx-react';
 import './Game.css';
 import stateStore from './../utils/stateStore';
 import Grid from './Grid';
 import Snake from './Snake';
 import Dot from './Dot';
 
+@inject('test')
 export default class Game extends Component {
   static initalState = {
     snake: [{ x: 15, y: 15 }],
@@ -109,6 +111,7 @@ export default class Game extends Component {
     return (
       <div>
         SCORE {(snake.length - 2) * 50 * Math.pow(1.05, snake.length - 2)}
+        {this.props.test}
         <div className='game' style={{ height, width, margin: `${verticalMargin}px ${horizontalMargin}px 0px` }}>
           <Grid {...{ gridSize }}  />
           <Snake {...{ gridSize, snake }}  />
