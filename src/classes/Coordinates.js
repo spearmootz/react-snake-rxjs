@@ -7,5 +7,5 @@ export default class Coordinates {
     this.id = Coordinates.id++;
   }
 
-  compare = (coordinates) => this.x === coordinates.x && this.y === coordinates.y; 
+  compare = (coordinates) => this.x === coordinates.x && this.y === coordinates.y;
 }
