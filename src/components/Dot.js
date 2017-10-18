@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import { inject, observer } from 'mobx-react';
 import './Dot.css';
 
+@inject('stores') @observer
 export default class Dot extends Component {
 
   render() {
-    const { coordinates: { x, y }, gridSize } = this.props;
+    const { gridSize } = this.props.stores.dimensions;
+    const { x, y } = this.props.stores.dot.coordinates;
 
     return (
       <div className='dot'>
