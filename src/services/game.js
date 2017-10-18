@@ -28,7 +28,6 @@ class GameService {
 
   step = () => {
     const head = rootStore.snake.getNextMove();
-    const length = rootStore.snake.length;
 
     if (this.checkDead(head)) {
       return this.reset();

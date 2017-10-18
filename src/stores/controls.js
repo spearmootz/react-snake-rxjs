@@ -1,4 +1,3 @@
-import { action, observable } from 'mobx';
 import Coordinates from './../classes/Coordinates';
 
 import Rx from 'rxjs';
