@@ -1,8 +1,9 @@
+import agent from './agent';
 import rootStore from './../stores';
 
 class GameService {
   interval = null;
-  static baseSpeed = 100;
+  baseSpeed = 0;
 
   reset = () => {
     rootStore.controls.reset();
@@ -12,10 +13,11 @@ class GameService {
   }
 
   setInterval = () => {
-    if (this.interval !== null) {
-      clearInterval(this.interval);
-    }
-    this.interval = setInterval(this.step, GameService.baseSpeed - (rootStore.snake.snake.length * 2));
+    // if (this.interval !== null) {
+    //   clearInterval(this.interval);
+    // }
+    // this.interval = setInterval(this.step, this.baseSpeed - (rootStore.snake.snake.length * 2));
+    setTimeout(this.step, this.baseSpeed);
   }
 
   snakeIsOnCoordinate = (coordinatesToCheck) => rootStore.snake.snake.some((coordinates, index) => index !== 0 && coordinates.compare(coordinatesToCheck))
@@ -27,22 +29,27 @@ class GameService {
   caughtDot = (head) => rootStore.dot.coordinates.compare(head);
 
   step = () => {
+    agent.play();
     const head = rootStore.snake.getNextMove();
 
     if (this.checkDead(head)) {
+      agent.die();
       return this.reset();
     }
 
     rootStore.snake.move();
 
     if (this.caughtDot(head)) {
+      agent.caught();
       rootStore.dot.regenerate();
       rootStore.score.updateHighScore();
-      this.setInterval();
+    } else {
+      agent.live();
     }
+      this.setInterval();
   }
-
-
 }
 
-export default new GameService();
+const gameService = new GameService();
+window.gameService = gameService;
+export default gameService;

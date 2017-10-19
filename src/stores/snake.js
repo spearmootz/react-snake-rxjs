@@ -6,10 +6,21 @@ export default class SnakeStore {
     this.rootStore = rootStore
   }
 
-  @observable snake = [];
+  @observable snake = [new Coordinates(Math.round(this.rootStore.dimensions.dimension) / 2, Math.round(this.rootStore.dimensions.dimension) / 2)];
 
   @computed get length () {
     return this.snake.length;
+  }
+
+  @computed get array () {
+    const currentState = [...this.rootStore.dimensions.blankState];
+    this.snake.forEach(coordinates => currentState[this.rootStore.dimensions.getCoordinateIndex(coordinates)] = 1);
+
+    return [this.snake[0].x, this.snake[0].y];//, ...currentState];
+  }
+
+  @computed get distanceToDot () {
+    return this.snake[0].distance(this.rootStore.dot.coordinates);
   }
 
   @action move = () => {
@@ -27,7 +38,8 @@ export default class SnakeStore {
   }
 
   @action reset = () => {
-    this.snake.replace(observable.shallowArray([new Coordinates(15, 15)]));
+    const middle = Math.round(this.rootStore.dimensions.dimension) / 2;
+    this.snake.replace(observable.shallowArray([new Coordinates(middle, middle)]));
   }
 
   getNextMove () {

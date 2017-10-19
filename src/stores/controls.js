@@ -33,6 +33,8 @@ export default class Controls {
   nextDirection = new Coordinates(0, 0);
   previousDirection = new Coordinates(0, 0);
 
+  moveMap = ['w', 'a', 's', 'd'];
+
   constructor (rootStore) {
     this.rootStore = rootStore;
     controls.subscribe(this.updateDirection);
@@ -43,6 +45,12 @@ export default class Controls {
       this.nextDirection = direction;
     }
   }
+
+  array = () => {
+    return [this.previousDirection.x, this.previousDirection.y];
+  }
+
+  mapKey = mapKeys;
 
   reset = () => {
     this.nextDirection = new Coordinates(0, 0);

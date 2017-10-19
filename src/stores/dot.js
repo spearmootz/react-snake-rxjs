@@ -1,4 +1,4 @@
-import { action, observable } from 'mobx';
+import { action, computed, observable } from 'mobx';
 import Coordinates from './../classes/Coordinates';
 
 export default class SnakeStore {
@@ -20,6 +20,10 @@ export default class SnakeStore {
     }
 
     this.coordinates = coordinates;
+  }
+
+  @computed get array () {
+    return [this.coordinates.x, this.coordinates.y];
   }
 
 }

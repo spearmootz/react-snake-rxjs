@@ -12,11 +12,15 @@ export default class Screen {
 
   @observable screenHeight = window.innerHeight
   @observable screenWidth = window.innerWidth
-  @observable dimension = 30;
+  @observable dimension = 20;
 
   @computed get gameLength () {
     const length = ((this.screenWidth < this.screenHeight ? this.screenWidth : this.screenHeight) * 0.9);
     return length - (length % this.dimension);
+  }
+
+  @computed get area () {
+    return this.dimension * this.dimension;
   }
 
   @computed get horizontalMargin () {
@@ -29,6 +33,20 @@ export default class Screen {
 
   @computed get gridSize () {
     return this.gameLength / this.dimension;
+  }
+
+  @computed get blankState () {
+    const state = [];
+
+    for (let x = 0; x < this.area; x++) {
+      state.push(0);
+    }
+
+    return state;
+  }
+
+  getCoordinateIndex = ({ x, y}) => {
+    return (y * this.dimension) + x;
   }
 
   @action updateScreenDimensions = (event) => {

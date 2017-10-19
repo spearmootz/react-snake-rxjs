@@ -11,14 +11,16 @@ const hydrate = create({
 
 class RootStore {
   constructor() {
+    this.dimensions = new DimensionsStore(this);
     this.score = new ScoreStore(this);
     hydrate('score', this.score);
 
     this.snake = new SnakeStore(this);
     this.dot = new DotStore(this);
-    this.dimensions = new DimensionsStore(this);
     this.controls = new ControlsStore(this);
   }
 }
 
-export default new RootStore();
+const store = window.store = new RootStore();
+
+export default store;

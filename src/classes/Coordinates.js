@@ -8,4 +8,6 @@ export default class Coordinates {
   }
 
   compare = (coordinates) => this.x === coordinates.x && this.y === coordinates.y;
+
+  distance = ({ x, y }) => Math.sqrt(Math.pow(x - this.x, 2) + Math.pow(y - this.y, 2))
 }
